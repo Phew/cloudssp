@@ -34,21 +34,18 @@ clear()
 
 home = f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - nmap/cloudssp)"
 
-
 def Menu(home):
     print(home)
     option = input(f">{Fore.YELLOW} ")
     if option == "nmap":
-        nmaping()
+        nmap()
     elif option == "cloudssp":
-        cloudssp()
+        cfcheck()
 
-def cloudssp():
-    clear()
-    print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - https://retards.lol/)")
-    cfcheck()
 
 def cfcheck():
+    clear()
+    print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - https://retards.lol/)")
     url = inputs = input(f">{Fore.YELLOW} ")
     x = requests.get(url+'/mailman/listinfo/mailman')
     
@@ -78,10 +75,6 @@ def leave():
     else:
         clear()
         print("Not a option")
-
-def nmaping():
-    clear()
-    nmap()
 
 def nmap():
     clear()
