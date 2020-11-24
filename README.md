@@ -17,7 +17,7 @@ requires > requests, colorama
 ```
 
 ```bash
-python3 exploit.py
+python3 cloudssp.py
 ```
 <img src="https://cdn.discordapp.com/attachments/778381865987735565/780868103818051624/unknown.png" style="max-width:50%;">
 
