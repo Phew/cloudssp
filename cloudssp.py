@@ -89,7 +89,7 @@ def ping():
 def nmap():
     clear()
     print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - 1.1.1.1)")
-    ip = inputs = input(f">{Fore.YELLOW} {Fore.WHITE}")
+    ip = inputs = input(f">{Fore.YELLOW} ")
 
     os.system("nmap "+inputs+"")
     leave()
