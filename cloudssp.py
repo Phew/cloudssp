@@ -32,20 +32,20 @@ for i in progressbar(range(100), "Loading, Please Wait ", 10):
 
 clear()
 
-home = f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - nmap/cloudssp/ping)"
+home = f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - nmap/cfbypass/ping)"
 
 def Menu(home):
     print(home)
     option = input(f">{Fore.YELLOW} ")
     if option == "nmap":
         nmap()
-    elif option == "cloudssp":
-        cfcheck()
+    elif option == "cfbypass":
+        bypass()
     elif option == "ping":
         ping()
 
 
-def cfcheck():
+def bypass():
     clear()
     print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter website (e.g - https://retards.lol/)")
     url = inputs = input(f">{Fore.YELLOW} ")
