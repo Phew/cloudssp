@@ -32,19 +32,30 @@ for i in progressbar(range(100), "Loading, Please Wait ", 10):
 
 clear()
 
-home = f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Target (e.g - https://retards.lol)"
+home = f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - nmap/cloudssp)"
 
 
 def Menu(home):
     print(home)
+    option = input(f">{Fore.YELLOW} ")
+    if option == "nmap":
+        nmaping()
+    elif option == "cloudssp":
+        cloudssp()
+
+def cloudssp():
+    clear()
+    print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - https://retards.lol/)")
     cfcheck()
 
 def cfcheck():
     url = inputs = input(f">{Fore.YELLOW} ")
     x = requests.get(url+'/mailman/listinfo/mailman')
+    
 
     if x.status_code == 404:
               print(f'{Fore.RED}Seems like this site is not vulnerable.')
+              leave()
     else:
           print(f"{Fore.CYAN}Looks like we found something!")
           print("")
@@ -53,6 +64,31 @@ def cfcheck():
 
           os.system("curl "+inputs+"/mailman/listinfo/mailman -s | findstr POST")
           time.sleep(0.5)
+          leave()
 
+def leave():
+    print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Type home to return home!{Fore.YELLOW} ")
+    returnopt = input("> ")
+    if returnopt == "home":
+        clear()
+        Menu(home)
+    elif returnopt == "q":
+        clear()
+        Menu(home)
+    else:
+        clear()
+        print("Not a option")
+
+def nmaping():
+    clear()
+    nmap()
+
+def nmap():
+    clear()
+    print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - 1.1.1.1)")
+    ip = inputs = input(f">{Fore.YELLOW} ")
+
+    os.system("nmap "+inputs+"")
+    leave()
 
 Menu(home)
