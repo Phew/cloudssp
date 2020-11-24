@@ -32,7 +32,7 @@ for i in progressbar(range(100), "Loading, Please Wait ", 10):
 
 clear()
 
-home = f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - nmap/cloudssp)"
+home = f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - nmap/cloudssp/ping)"
 
 def Menu(home):
     print(home)
@@ -41,11 +41,13 @@ def Menu(home):
         nmap()
     elif option == "cloudssp":
         cfcheck()
+    elif option == "ping":
+        ping()
 
 
 def cfcheck():
     clear()
-    print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - https://retards.lol/)")
+    print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter website (e.g - https://retards.lol/)")
     url = inputs = input(f">{Fore.YELLOW} ")
     x = requests.get(url+'/mailman/listinfo/mailman')
     
@@ -54,9 +56,9 @@ def cfcheck():
               print(f'{Fore.RED}Seems like this site is not vulnerable.')
               leave()
     else:
-          print(f"{Fore.CYAN}Looks like we found something!")
+          print(f"{Fore.WHITE}Looks like we found something!")
           print("")
-          print(f"{Fore.WHITE}IP/Domain links found:")
+          print(f"{Fore.YELLOW}IP/Domain links found:{Fore.WHITE}")
           print("")
 
           os.system("curl "+inputs+"/mailman/listinfo/mailman -s | findstr POST")
@@ -74,12 +76,20 @@ def leave():
         Menu(home)
     else:
         clear()
-        print("Not a option")
+        print("Invalid Option")
+        leave()
+
+def ping():
+    clear()
+    print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter website/ip (e.g - https://retards.lol/1.1.1.1)")
+    ip = inputs = input(f">{Fore.YELLOW} ")
+    os.system("ping "+inputs+"")
+    leave()
 
 def nmap():
     clear()
     print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - 1.1.1.1)")
-    ip = inputs = input(f">{Fore.YELLOW} ")
+    ip = inputs = input(f">{Fore.YELLOW} {Fore.WHITE}")
 
     os.system("nmap "+inputs+"")
     leave()
