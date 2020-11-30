@@ -4,6 +4,7 @@ import colorama
 import os
 import asyncio
 import time
+import ctypes
 from urllib.parse import urlparse 
 from colorama import Fore, Back, Style
 
@@ -28,6 +29,7 @@ def progressbar(it, prefix="", size=60, file=sys.stdout):
     file.flush()
 
 for i in progressbar(range(100), "Loading, Please Wait ", 10):
+        ctypes.windll.kernel32.SetConsoleTitleW('Loading...')
         time.sleep(0.02)
 
 clear()
@@ -35,6 +37,7 @@ clear()
 home = f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - nmap/cfbypass/ping)"
 
 def Menu(home):
+    ctypes.windll.kernel32.SetConsoleTitleW('Home')
     print(home)
     option = input(f">{Fore.YELLOW} ")
     if option == "nmap":
@@ -43,10 +46,14 @@ def Menu(home):
         bypass()
     elif option == "ping":
         ping()
+    else:
+        clear()
+        Menu(home)
 
 
 def bypass():
     clear()
+    ctypes.windll.kernel32.SetConsoleTitleW('CloudFlare Bypass')
     print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter website (e.g - https://retards.lol/)")
     url = inputs = input(f">{Fore.YELLOW} ")
     x = requests.get(url+'/mailman/listinfo/mailman')
@@ -81,6 +88,7 @@ def leave():
 
 def ping():
     clear()
+    ctypes.windll.kernel32.SetConsoleTitleW('Ping')
     print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter website/ip (e.g - https://retards.lol/1.1.1.1)")
     ip = inputs = input(f">{Fore.YELLOW} ")
     os.system("ping "+inputs+"")
@@ -88,6 +96,7 @@ def ping():
 
 def nmap():
     clear()
+    ctypes.windll.kernel32.SetConsoleTitleW('Nmap')
     print(f"{Fore.YELLOW}[cloudssp]{Fore.WHITE} Enter Option (e.g - 1.1.1.1)")
     ip = inputs = input(f">{Fore.YELLOW} ")
 
